@@ -1,0 +1,29 @@
+# Wygenerowane przez gpt bo jestem leniwy
+
+items:
+  exampleItem1:
+    material: DIAMOND_SWORD
+    name: "&bSuper Miecz"
+    lore:
+      - "&7Mocny miecz o wysokiej jakości."
+      - "&7Idealny dla poszukiwaczy przygód."
+    enchant: DAMAGE_ALL
+    enchantlvl: 5
+    slots: 1
+    skullName: "Notch"
+    skullValue: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5..."
+    customModelData: 123456
+    flags:
+      - HIDE_ENCHANTS
+      - HIDE_ATTRIBUTES
+
+  exampleItem2:
+    material: PLAYER_HEAD
+    name: "&aGłowa Gracza"
+    lore:
+      - "&7Daje wygląd gracza."
+      - "&7Zmień właściciela lub teksturę w configu."
+    skullName: "PlayerName"
+    skullValue: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5..."
+    slots: 3
+    customModelData: 0

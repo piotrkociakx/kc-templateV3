@@ -1,0 +1,7 @@
+name: kc-template
+version: '${version}'
+main: pl.piotrkociakx.plugintemplate.Main
+api-version: '1.16'
+load: STARTUP
+softdepend: [PlaceHolderAPI]
+authors: [piotrkociakx]
