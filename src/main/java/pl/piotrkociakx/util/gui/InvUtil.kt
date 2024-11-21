@@ -1,5 +1,6 @@
 package pl.piotrkociakx.util.gui
 
+import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.configuration.file.FileConfiguration
@@ -24,7 +25,7 @@ class InvUtil {
             if(rows <1 || rows < 9) {
                 throw InventoryException("Invalid rows number")
             }
-            return Bukkit.createInventory(player.getPlayer(), rows, ChatUtil.replace(name))
+            return Bukkit.createInventory(player.getPlayer(), rows, Component.text(ChatUtil.replace(name)))
         }
 
         /**
