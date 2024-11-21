@@ -7,7 +7,7 @@ import pl.piotrkociakx.plugintemplate.Main
 import pl.piotrkociakx.util.handler.CommandHandler
 import java.lang.reflect.Field
 
-abstract class PluginManager {
+abstract class PluginManagerImplementation {
 
     /**
      * Tutaj Dodaj liste komend do zarejstrowania
@@ -24,29 +24,31 @@ abstract class PluginManager {
      * zmienne: `{name}`.
      * Przykład: "[+] {name} dodana.".
      */
-    fun registerCommands(logMessage : String) {
+    fun registerCommands(logMessage: String) {
         try {
             val bukkitCommandMap: Field = Bukkit.getServer().javaClass.getDeclaredField("commandMap")
-
-            bukkitCommandMap.setAccessible(true)
+            bukkitCommandMap.isAccessible = true
             val commandMap = bukkitCommandMap.get(Bukkit.getServer()) as CommandMap
 
-            val minecraftlogger = Main.getInstance().logger
+            val minecraftLogger = Main.instance.logger
 
             cmdMapper().forEach { command ->
                 command.register(commandMap)
+
+                command.aliases.forEach { alias ->
+                    command.setName(alias)
+                    command.register(commandMap)
+                }
                 if (logMessage.isNotEmpty()) {
-                    minecraftlogger.info(logMessage.replace("{name}", command.name))
+                    minecraftLogger.info(logMessage.replace("{name}", command.name))
                 }
             }
-
-
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
 
     fun registerListeners() {
-        listenerMapper().forEach { listener -> Main.getInstance().server.pluginManager.registerEvents(listener, Main.getInstance())}
+        listenerMapper().forEach { listener -> Main.instance.server.pluginManager.registerEvents(listener, Main.instance)}
     }
 }

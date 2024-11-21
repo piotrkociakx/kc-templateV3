@@ -12,7 +12,8 @@ import org.bukkit.configuration.file.FileConfiguration
 class ExampleCommand : CommandHandler(
     "test", // Nazwa komendy
     null,  // Permisja. mozesz dac null jesli ma byc bez
-    true   // Czy ma byc tylko dla gracza?
+    true,   // Czy ma byc tylko dla gracza?
+    "testowakoemdna"
 ) {
 
     /**

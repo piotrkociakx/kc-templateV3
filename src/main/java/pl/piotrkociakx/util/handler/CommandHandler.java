@@ -7,6 +7,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 import org.jetbrains.annotations.NotNull;
+import pl.piotrkociakx.plugintemplate.Main;
+import pl.piotrkociakx.plugintemplate.plugin.PluginManager;
 import pl.piotrkociakx.util.config.ConfigManager;
 import pl.piotrkociakx.util.player.BPlayer;
 
@@ -16,13 +18,14 @@ public abstract class CommandHandler extends Command {
 
     private final String permission;
     private final boolean playeronly;
+    public String[] aliases;
 
     public CommandHandler(String command, String permission, boolean playeronly, String... aliases) {
         super(command);
         if(permission != null) Bukkit.getServer().getPluginManager().addPermission(new Permission(permission, command.toLowerCase()));
-        if(aliases != null && aliases.length > 0) this.setAliases(Arrays.asList(aliases));
         this.permission = permission;
         this.playeronly = playeronly;
+        this.aliases = Arrays.stream(aliases).map(String::toLowerCase).toArray(String[]::new);
     }
 
     public abstract void command(BPlayer player, FileConfiguration config, String[] args);

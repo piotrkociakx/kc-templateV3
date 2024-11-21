@@ -28,6 +28,7 @@ import org.bukkit.potion.PotionEffectType
 import org.bukkit.scoreboard.Scoreboard
 import org.bukkit.util.Vector
 import pl.piotrkociakx.util.chat.ChatUtil
+import pl.piotrkociakx.util.hook.Hook
 import java.net.InetSocketAddress
 import java.util.*
 
@@ -55,7 +56,7 @@ class BPlayer(private val player: Player) {
         coloredMessage = ChatUtil.replaceHexColors(coloredMessage)
         coloredMessage = ChatUtil.replacePlaceholders(player, coloredMessage)
 
-        return if (ChatUtil.isUsePlaceholderAPI()) {
+        return if (Hook.isPlaceHolderAPI()) {
             PlaceholderAPI.setPlaceholders(player, coloredMessage)
         } else {
             coloredMessage
